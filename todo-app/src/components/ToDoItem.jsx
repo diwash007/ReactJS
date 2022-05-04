@@ -5,7 +5,7 @@ const ToDoItem = ({ item, toggleItem }) => {
   return (
     <li
       className={item.complete ? "completed" : "not-completed"}
-      onClick={(id) => handleClick(item.id - 1)}
+      onClick={(id) => handleClick(item.id)}
     >
       {item.task}
     </li>

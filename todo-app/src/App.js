@@ -6,12 +6,12 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [dataList, setDataList] = useState(() => {
-    const data = localStorage.getItem('items');
-    if (data) return JSON.parse(data)
-    return []
+    const data = localStorage.getItem("items");
+    if (data) return JSON.parse(data);
+    return [];
   });
-  
-  useEffect(() => localStorage.setItem('items', JSON.stringify(dataList)))
+
+  useEffect(() => localStorage.setItem("items", JSON.stringify(dataList)));
 
   const addItem = (task) => {
     let items = [...dataList];
@@ -27,11 +27,18 @@ function App() {
   };
 
   const toggleItem = (id) => {
-    let items = [...dataList];
-    items[id]["complete"]
-      ? (items[id].complete = false)
-      : (items[id].complete = true);
-    setDataList(items);
+    // let items = [...dataList];
+    // items[id]["complete"]
+    //   ? (items[id].complete = false)
+    //   : (items[id].complete = true);
+    // setDataList(items);
+
+    const mapped = dataList.map((item) => {
+      return item.id !== id
+        ? item
+        : { id: item.id, task: item.task, complete: !item.complete };
+    });
+    setDataList(mapped);
   };
 
   return (

@@ -9,13 +9,14 @@ const ToDoForm = ({addItem}) => {
     }
     const handleInput = (e) => {
         e.preventDefault()
-        addItem(item)
+        if (item !== '')
+            addItem(item)
         setItem('')
     }
 
     return (
         <form onSubmit={handleInput}>
-            <textarea onChange={handleChange}/> <br />
+            <input type='text' value={item} onChange={handleChange}/> <br />
             <input type='submit' value='Add'/>
         </form>
      );
