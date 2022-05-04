@@ -1,10 +1,12 @@
-const ToDoItem = ({item}) => {
+const ToDoItem = ({item, toggleItem}) => {
+
+    const handleClick = (id) => {
+        toggleItem(id)
+    }
     return ( 
-        <li>
-            {item.complete?
-                <font color='red'>{item.task}</font>:
-                item.task
-            }
+        <li className={item.complete? 'completed': 'not-completed'} onClick={id => handleClick(item.id-1)}>
+
+{item.task}
           </li>
      );
 }

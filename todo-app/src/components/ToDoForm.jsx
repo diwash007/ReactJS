@@ -15,7 +15,7 @@ const ToDoForm = ({addItem}) => {
 
     return (
         <form onSubmit={handleInput}>
-            <input type='text' onChange={handleChange}/>&nbsp;
+            <textarea onChange={handleChange}/> <br />
             <input type='submit' value='Add'/>
         </form>
      );
