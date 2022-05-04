@@ -42,19 +42,30 @@ function App() {
   };
 
   const getCompleted = () => {
-    let completed = []
-    for(let item of dataList) {
-      if (item.complete)
-        completed.push(item)
+    let completed = [];
+    let notCompleted = [];
+    for (let item of dataList) {
+      if (item.complete) completed.push(item);
+      else notCompleted.push(item);
     }
-    setDataList(completed)
+    let sortedItems = [...completed, ...notCompleted];
+    setDataList(sortedItems);
+  };
+
+  const removeCompleted = () => {
+    let newList = []
+    for(let item of dataList) {
+      if (!item.complete) newList.push(item)
+    }
+    setDataList(newList)
   }
 
   return (
     <div className="todoapp">
       <Header />
       <ToDoForm addItem={addItem} />
-      <input type='button' onClick={getCompleted} value='Completed'/>
+      <input type="button" onClick={getCompleted} value="Completed" />
+      <input type='button' onClick={removeCompleted} value='Remove completed' />
       <ToDoList toDoList={dataList} toggleItem={toggleItem} />
     </div>
   );
