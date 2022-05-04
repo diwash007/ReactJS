@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-const ToDoForm = ({data}) => {
+const ToDoForm = ({addItem}) => {
 
     const [item, setItem] = useState('');
 
@@ -9,11 +9,13 @@ const ToDoForm = ({data}) => {
     }
     const handleInput = (e) => {
         e.preventDefault()
+        addItem(item)
+        setItem('')
     }
 
     return (
         <form onSubmit={handleInput}>
-            <input type='text' onChange={handleChange}/>
+            <input type='text' onChange={handleChange}/>&nbsp;
             <input type='submit' value='Add'/>
         </form>
      );

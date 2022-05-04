@@ -14,8 +14,9 @@ body {
 .todo-list {
   background-color: lightblue;
   padding: 20px;
-  margin: 20px;
+  margin: 30px auto;
   border: 1px solid black;
+  width: 200px;
 }
 
 ul {

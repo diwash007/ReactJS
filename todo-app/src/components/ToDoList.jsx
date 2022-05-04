@@ -4,7 +4,7 @@ const ToDoList = ({ toDoList }) => {
   return (
     <div className='todo-list'>
       <ul>
-        {toDoList && toDoList.map((item) => (
+        {toDoList.map((item) => (
           <ToDoItem item={item} key={item.id}/>
         ))}
       </ul>
