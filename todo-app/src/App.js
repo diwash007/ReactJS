@@ -2,12 +2,16 @@ import "./App.css";
 import Header from "./components/Header";
 import ToDoForm from "./components/ToDoForm";
 import ToDoList from "./components/ToDoList";
-import { useState } from "react";
-
-import data from "./data/items.json";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [dataList, setDataList] = useState(data);
+  const [dataList, setDataList] = useState(() => {
+    const data = localStorage.getItem('items');
+    if (data) return JSON.parse(data)
+    return []
+  });
+  
+  useEffect(() => localStorage.setItem('items', JSON.stringify(dataList)))
 
   const addItem = (task) => {
     let items = [...dataList];
@@ -20,19 +24,21 @@ function App() {
       },
     ];
     setDataList(items);
-  }
+  };
 
   const toggleItem = (id) => {
     let items = [...dataList];
-    items[id]['complete']? items[id].complete = false: items[id].complete = true
-    setDataList(items)
-  }
+    items[id]["complete"]
+      ? (items[id].complete = false)
+      : (items[id].complete = true);
+    setDataList(items);
+  };
 
   return (
     <div className="todoapp">
       <Header />
       <ToDoForm addItem={addItem} />
-      <ToDoList toDoList={dataList} toggleItem={toggleItem}/>
+      <ToDoList toDoList={dataList} toggleItem={toggleItem} />
     </div>
   );
 }
