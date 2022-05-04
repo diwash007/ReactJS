@@ -2,13 +2,16 @@ header {
   width: 100%;
   margin: 0 auto;
   height: 100px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  background-color: azure;
 }
 
 .todo-list {
@@ -27,9 +30,29 @@ ul {
 
 input[type=submit] {
   background-color: green;
+}
+
+.completed-btn {
+  background-color: blue;
+}
+
+.remove-btn {
+  background-color: darkred;
+}
+
+.btn {
   color: white;
-  width: 80px;
-  padding: 5px;
+  max-width: 200px;
+  padding: 8px 25px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn:hover {
+  /* filter: saturate(25%); */
+  filter: drop-shadow(2px 2px 2px black)
 }
 
 input[type=text] {

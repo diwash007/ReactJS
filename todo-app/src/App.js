@@ -64,8 +64,8 @@ function App() {
     <div className="todoapp">
       <Header />
       <ToDoForm addItem={addItem} />
-      <input type="button" onClick={getCompleted} value="Completed" />
-      <input type='button' onClick={removeCompleted} value='Remove completed' />
+      <input type="button" className='completed-btn btn' onClick={getCompleted} value="Completed" /> &nbsp;
+      <input type='button' className='remove-btn btn' onClick={removeCompleted} value='Delete Em' />
       <ToDoList toDoList={dataList} toggleItem={toggleItem} />
     </div>
   );
