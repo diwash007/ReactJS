@@ -41,10 +41,20 @@ function App() {
     setDataList(mapped);
   };
 
+  const getCompleted = () => {
+    let completed = []
+    for(let item of dataList) {
+      if (item.complete)
+        completed.push(item)
+    }
+    setDataList(completed)
+  }
+
   return (
     <div className="todoapp">
       <Header />
       <ToDoForm addItem={addItem} />
+      <input type='button' onClick={getCompleted} value='Completed'/>
       <ToDoList toDoList={dataList} toggleItem={toggleItem} />
     </div>
   );
