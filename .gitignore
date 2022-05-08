@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+counter-app/node_modules
 /.pnp
 .pnp.js
 
