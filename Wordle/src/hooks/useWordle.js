@@ -8,16 +8,31 @@ const useWordle = (solution) => {
   const [isCorrect, SetIsCorrect] = useState(false);
 
   const formatGuess = () => {
+    console.log(solution);
     let solutionArray = [...solution];
     let formattedGuess = [...currentGuess].map((letter) => {
       return { key: letter, color: "grey" };
     });
+
+    formattedGuess.forEach((l, i) => {
+      if (l.key === solutionArray[i]) {
+        formattedGuess[i].color = "green";
+        solutionArray[i] = null;
+      }
+    });
+
+    formattedGuess.forEach((l, i) => {
+      if (solutionArray.includes(l.key) && l.color !== "green")
+        formattedGuess[i].color = "yellow";
+      solutionArray[solutionArray.indexOf(l.key)] = null;
+    });
+
+    return formattedGuess;
   };
 
   const addNewGuess = () => {};
 
   const handleKeyup = ({ key }) => {
-    console.log(history);
     if (key === "Enter") {
       if (turn > 5) {
         console.log("you lose");
@@ -32,7 +47,8 @@ const useWordle = (solution) => {
         return;
       }
       setHistory([currentGuess, ...history]);
-      formatGuess();
+      let formattedGuess = formatGuess();
+      console.log(formattedGuess);
     }
 
     if (key === "Backspace") {
