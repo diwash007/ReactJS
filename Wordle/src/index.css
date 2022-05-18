@@ -40,6 +40,6 @@ h1 {
   background: #e2cc68;
   border-color: #e2cc68;
 }
-.past > div {
-  background: thistle;
+.current > .filled {
+  border-color: black;
 }

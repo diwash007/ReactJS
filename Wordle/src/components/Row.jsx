@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Row({ guess }) {
+export default function Row({ guess, currentGuess }) {
   if (guess) {
     return (
       <div className="row past">
@@ -14,6 +14,23 @@ export default function Row({ guess }) {
       </div>
     );
   }
+
+  if (currentGuess) {
+    let letters = currentGuess.split("");
+    while (letters.length !== 5) letters.push("");
+    return (
+      <div className="row current">
+        {letters.map((l, i) => {
+          return (
+            <div key={i} className="filled">
+              {l}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div className="row">
       <div></div>
