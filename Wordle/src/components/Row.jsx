@@ -17,7 +17,6 @@ export default function Row({ guess, currentGuess }) {
 
   if (currentGuess) {
     let letters = currentGuess.split("");
-    while (letters.length !== 5) letters.push("");
     return (
       <div className="row current">
         {letters.map((l, i) => {
@@ -27,6 +26,9 @@ export default function Row({ guess, currentGuess }) {
             </div>
           );
         })}
+        {[...Array(5 - letters.length)].map((_, i) => (
+          <div key={i}></div>
+        ))}
       </div>
     );
   }
