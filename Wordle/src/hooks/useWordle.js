@@ -3,8 +3,8 @@ import { useState } from "react";
 const useWordle = (solution) => {
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState("");
-  const [guesses, setGuesses] = useState([]);
-  const [history, setHistory] = useState(["hello", "po"]);
+  const [guesses, setGuesses] = useState([...Array(6)]);
+  const [history, setHistory] = useState([]);
   const [isCorrect, SetIsCorrect] = useState(false);
 
   const formatGuess = () => {
@@ -30,7 +30,23 @@ const useWordle = (solution) => {
     return formattedGuess;
   };
 
-  const addNewGuess = () => {};
+  const addNewGuess = (formattedGuess) => {
+    if (currentGuess === solution) {
+      SetIsCorrect(true);
+    }
+    setGuesses((prevGuesses) => {
+      let newGuesses = [...prevGuesses];
+      newGuesses[turn] = formattedGuess;
+      return newGuesses;
+    });
+    setHistory((prev) => {
+      return [...prev, currentGuess];
+    });
+    setTurn((prev) => {
+      return prev + 1;
+    });
+    setCurrentGuess("");
+  };
 
   const handleKeyup = ({ key }) => {
     if (key === "Enter") {
@@ -48,7 +64,7 @@ const useWordle = (solution) => {
       }
       setHistory([currentGuess, ...history]);
       let formattedGuess = formatGuess();
-      console.log(formattedGuess);
+      addNewGuess(formattedGuess);
     }
 
     if (key === "Backspace") {
