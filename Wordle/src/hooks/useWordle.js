@@ -8,7 +8,6 @@ const useWordle = (solution) => {
   const [isCorrect, SetIsCorrect] = useState(false);
 
   const formatGuess = () => {
-    console.log(solution);
     let solutionArray = [...solution];
     let formattedGuess = [...currentGuess].map((letter) => {
       return { key: letter, color: "grey" };
