@@ -59,6 +59,34 @@ h1 {
 .row > div:nth-child(5) {
   animation-delay: 1s;
 }
+.keypad {
+  max-width: 500px;
+  margin: 20px auto;
+}
+.keypad > div {
+  margin: 5px;
+  width: 40px;
+  height: 50px;
+  background: #eee;
+  display: inline-block;
+  border-radius: 6px;
+  line-height: 50px;
+}
+.keypad > div.green {
+  background: #538d4e;
+  color: white;
+  transition: all 0.3s ease-in
+}
+.keypad > div.yellow {
+  background: #c9b458;
+  color: white;
+  transition: all 0.3s ease-in
+}
+.keypad > div.grey {
+  background: grey;
+  color: white;
+  transition: all 0.3s ease-in
+}
 
 /* animations */
 @keyframes flip {
