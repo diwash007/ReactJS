@@ -110,7 +110,9 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
+.error {
+  color: red;
+}
 /* animations */
 @keyframes flip {
   0% {

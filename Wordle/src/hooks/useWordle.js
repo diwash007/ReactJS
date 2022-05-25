@@ -7,6 +7,7 @@ const useWordle = (solution) => {
   const [history, setHistory] = useState([]);
   const [isCorrect, SetIsCorrect] = useState(false);
   const [usedKeys, setUsedKeys] = useState({});
+  const [error, setError] = useState("_");
 
   const formatGuess = () => {
     let solutionArray = [...solution];
@@ -78,11 +79,17 @@ const useWordle = (solution) => {
         return;
       }
       if (currentGuess.length !== 5) {
-        console.log("not a 5 letter word");
+        setError("Not a 5 letter word.");
+        setTimeout(function () {
+          setError("_");
+        }, 3000);
         return;
       }
       if (history.includes(currentGuess)) {
-        console.log("you already guessed that");
+        setError("You already guessed that word.");
+        setTimeout(function () {
+          setError("_");
+        }, 3000);
         return;
       }
       setHistory([currentGuess, ...history]);
@@ -105,7 +112,16 @@ const useWordle = (solution) => {
       }
     }
   };
-  return { turn, currentGuess, guesses, isCorrect, formatGuess, handleKeyup, usedKeys };
+  return {
+    turn,
+    currentGuess,
+    guesses,
+    isCorrect,
+    error,
+    formatGuess,
+    handleKeyup,
+    usedKeys,
+  };
 };
 
 export default useWordle;

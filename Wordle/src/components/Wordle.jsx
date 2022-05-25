@@ -11,6 +11,7 @@ export default function Wordle({ solution }) {
     isCorrect,
     turn,
     usedKeys,
+    error,
     handleKeyup,
     formatGuess,
   } = useWordle(solution);
@@ -36,7 +37,6 @@ export default function Wordle({ solution }) {
 
   return (
     <div>
-      Solution - {solution} <br />
       Current Guess: {currentGuess} <br />
       <Grid
         currentGuess={currentGuess}
@@ -44,6 +44,7 @@ export default function Wordle({ solution }) {
         turn={turn}
         formatGuess={formatGuess}
       />
+      <div className="error">{error}</div>
       <Keypad usedKeys={usedKeys} />
       {showModal && (
         <Modal isCorrect={isCorrect} turn={turn} solution={solution} />
